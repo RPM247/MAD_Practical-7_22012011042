@@ -25,8 +25,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-
-        // Set up edge-to-edge display
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -39,11 +37,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Initialize RecyclerView
-        recyclerView = findViewById(R.id.recycler_view)  // Assumes there's a RecyclerView with id `recycler_view` in activity_main.xml
+        recyclerView = findViewById(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(this)
-
-        // Fetch and display person details
         fetchPersonDetails()
     }
 
@@ -54,7 +49,6 @@ class MainActivity : AppCompatActivity() {
                     "https://api.json-generator.com/templates/iqcfRY20uFzp/data",
                     "lqkrwzc0yubxmoticx944ci62rhvayjkm7opd9v9"
                 )
-
                 withContext(Dispatchers.Main) {
                     if (data != null) {
                         getPersonDetailsFromJson(data)
@@ -73,11 +67,8 @@ class MainActivity : AppCompatActivity() {
                 val jsonObject = jsonArray.getJSONObject(index)
                 Person.fromJson(jsonObject)
             }
-
-            // Set up the adapter with the parsed data
             personAdapter = PersonAdapter(personList)
             recyclerView.adapter = personAdapter
-
         } catch (e: Exception) {
             e.printStackTrace()
         }

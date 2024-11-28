@@ -65,6 +65,7 @@ class DatabaseHelper(context:Context?):SQLiteOpenHelper(context,DATABASE_NAME,nu
         return personList
     }
 
+
     // Helper function for nullable columns
     private fun Cursor.getDoubleOrNull(columnIndex: Int): Double? =
         if (isNull(columnIndex)) null else getDouble(columnIndex)
