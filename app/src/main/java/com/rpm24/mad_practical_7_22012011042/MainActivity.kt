@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
             try {
                 val data = HttpRequest().makeServiceCall(
                     "https://api.json-generator.com/templates/iqcfRY20uFzp/data",
-                    "lqkrwzc0yubxmoticx944ci62rhvayjkm7opd9v9"
+
                 )
                 withContext(Dispatchers.Main) {
                     if (data != null) {
